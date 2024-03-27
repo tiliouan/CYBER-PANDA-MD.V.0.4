@@ -2188,6 +2188,17 @@ Typed *surrender* to surrender and admited defeat`
         A17.sendMessage(m.chat, { caption: mess.success, image: { url: kairesult.url } }, { quoted: m })
         break;
 
+        case 'tria':
+        if (isBan) return reply(mess.banned);
+        if (isBanChat) return reply(mess.bangc);
+        if (!m.isGroup) return reply(mess.grouponly);
+        if (!AntiNsfw) return reply(mess.nonsfw);
+        A17.sendMessage(from, { react: { text: "🥵", key: m.key } })
+
+        var nsfwdata = JSON.parse(fs.readFileSync('./HostMedia/nsfw/tria.json'))
+        var kairesult = pickRandom(nsfwdata)
+        A17.sendMessage(m.chat, { caption: mess.success, image: { url: kairesult.url } }, { quoted: m })
+        break;
 
       case 'bdsm':
         if (isBan) return reply(mess.banned);
